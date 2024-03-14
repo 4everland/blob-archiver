@@ -95,6 +95,12 @@ func (s *S3Storage) Write(ctx context.Context, data BlobData) error {
 	reader := bytes.NewReader(b)
 	_, err = s.s3.PutObject(ctx, s.bucket, data.Header.BeaconBlockHash.String(), reader, int64(len(b)), minio.PutObjectOptions{
 		ContentType: "application/json",
+		UserTags: map[string]string{
+			"App-Name":          "BlobArchiver",
+			"Chain":             "Ethereum",
+			"Chain-Id":          "1",
+			"Beacon-Block-Hash": data.Header.BeaconBlockHash.String(),
+		},
 	})
 
 	if err != nil {

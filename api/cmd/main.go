@@ -14,6 +14,7 @@ import (
 	"github.com/ethereum-optimism/optimism/op-service/cliapp"
 	oplog "github.com/ethereum-optimism/optimism/op-service/log"
 	"github.com/ethereum/go-ethereum/log"
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/urfave/cli/v2"
 )
 
